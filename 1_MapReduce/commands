@@ -1,0 +1,13 @@
+hdfs dfs -D dfs.blocksize=59392 -put price.txt /price.txt
+
+mapred streaming -files scripts/mean_reducer.py,scripts/mean_mapper.py \
+-input /price.txt \
+-output /output_mean \
+-mapper ./mean_mapper.py \
+-reducer ./mean_reducer.py
+
+mapred streaming -files scripts/var_reducer.py,scripts/var_mapper.py \
+-input /price.txt \
+-output /output_var.txt \
+-mapper ./var_mapper.py \
+-reducer ./var_reducer.py
