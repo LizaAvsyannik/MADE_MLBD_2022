@@ -1,0 +1,15 @@
+docker data/artists.csv docker-hadoop-hive-parquet_hive-server_1:opt/
+docker exec -it docker-hadoop-hive-parquet_hive-server_1 bash
+
+/opt/hive/bin/beeline -u jdbc:hive2://localhost:10000
+
+CREATE TABLE artists 
+    (mbid STRING, artist_mb STRING, 
+    artist_lastfm STRING, country_mb STRING, 
+    country_lastfm STRING, tags_mb STRING, 
+    tags_lastfm STRING, listeners_lastfm BIGINT, 
+    scrobbles_lastfm BIGINT, ambiguous_artist BOOLEAN) 
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
+    TBLPROPERTIES("skip.header.line.count"="1");
+
+LOAD DATA LOCAL INPATH '/opt/artists.csv' INTO TABLE artists;
