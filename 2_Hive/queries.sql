@@ -16,7 +16,7 @@ LIMIT 1;
 
 -- # 3 most popular artist of 10 most popular last fm tags
 WITH
-artists_tags AS (
+artist_listeners_tag AS (
   SELECT artist_lastfm, listeners_lastfm, tmp_tag AS tag
   FROM artists
   LATERAL VIEW explode(split(tags_lastfm, ';')) tmp_tag_table AS tmp_tag
@@ -31,7 +31,7 @@ most_popular_tags AS (
 ),
 most_popular_artists AS (
   SELECT artist_lastfm, listeners_lastfm
-  FROM artists_tags
+  FROM artist_listeners_tag
   WHERE tag IN (SELECT tag FROM most_popular_tags)
   ORDER BY listeners_lastfm DESC
   LIMIT 10
