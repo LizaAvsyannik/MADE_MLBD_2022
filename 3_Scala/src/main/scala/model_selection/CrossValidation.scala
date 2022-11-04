@@ -19,7 +19,7 @@ class CrossValidation {
         val cv_results_file = new PrintWriter(new File("results/cross_val.txt" ))
         val fold_size: Int = X.rows / n_folds
 
-        for( i <- 0 to n_folds - 1 ) {
+        for ( i <- 0 to n_folds - 1 ) {
             val X_out: DenseMatrix[Double] = X(i to i + fold_size - 1, ::).toDenseMatrix
             val y_out: DenseVector[Double] = y(i to i + fold_size - 1)
             
