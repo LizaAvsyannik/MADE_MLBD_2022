@@ -128,4 +128,12 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-.vsode/
+.vscode/
+
+#Scala
+.bloop/
+.bsp/
+.metals/
+project/
+target/
+
