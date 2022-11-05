@@ -4,6 +4,7 @@ import java.io.File
 
 import models.LinearRegression
 import model_selection.CrossValidation
+
 object Main {
     def main(args: Array[String]): Unit = {
         if (args.length != 3) {
