@@ -1,0 +1,2 @@
+docker run -u $(id -u) -p 8080:8080 --rm -v <full_path_to_project>/4_Spark:/notebook \
+-v /usr/local/spark/:/opt/spark -e SPARK_HOME=/opt/spark  -e ZEPPELIN_NOTEBOOK_DIR='/notebook' --name zeppelin apache/zeppelin:0.10.1
